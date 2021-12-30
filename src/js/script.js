@@ -102,7 +102,7 @@
         /* prevent default action for event */
         event.preventDefault();
         /* find active product (product that has active class) */
-        const activeProduct = document.querySelector(classNames.menuProduct.wrapperActive);
+        const activeProduct = document.querySelector(select.all.menuProductsActive);
         /* if there is active product and it's not thisProduct.element, remove class active from it */
         if(activeProduct && activeProduct != thisProduct.element){
           activeProduct.classList.remove('active');
@@ -114,9 +114,8 @@
       });
     }
 
-    initOrderForm (){
+    initOrderForm(){
       const thisProduct = this;
-      //console.log ('initOrderForm');
 
       thisProduct.form.addEventListener('submit', function(event){
         event.preventDefault();
@@ -215,6 +214,7 @@
 
       console.log('AmountWidget', thisWidget);
       console.log('constructor arguments:', element);
+      console.log('initActions', thisWidget.initActions);
     }
 
     getElements(element){
@@ -233,11 +233,11 @@
       const newValue = parseInt(value);
 
       /* TODO: Add validation */
-      if(thisWidget.value !== newValue && !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
+      if(thisWidget.value !== newValue && !isNaN(newValue) && value <= settings.amountWidget.defaultMax && value >= settings.amountWidget.defaultMin) {
         thisWidget.value = newValue;
       }
 
-      thisWidget.value = newValue;
+
       thisWidget.input.value = thisWidget.value;
     }
 
@@ -257,7 +257,6 @@
         event.preventDefault();
         thisWidget.setValue(thisWidget.value + 1);
       });
-      
     }
   }
 
