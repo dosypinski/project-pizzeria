@@ -369,6 +369,22 @@
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       thisCart.dom.productList.appendChild(generatedDOM);
       thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
+      thisCart.update();
+    }
+    update(){
+      const thisCart = this;
+      const deliveryFee = settings.cart.defaultDeliveryFee;
+      let totalNumber = 0;
+      let subtotalPrice = 0;
+      for(let thisCartProduct of thisCart.products){
+        totalNumber += thisCartProduct.amount;
+        subtotalPrice += thisCartProduct.price;
+      }
+      thisCart.totalPrice = 0;
+      if(totalNumber > 0){
+        thisCart.totalPrice = subtotalPrice + deliveryFee;
+      }
+      console.log('update', deliveryFee, totalNumber, subtotalPrice, thisCart.totalPrice);
     }
   }
 
