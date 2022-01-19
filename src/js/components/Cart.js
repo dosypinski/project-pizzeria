@@ -83,12 +83,9 @@ class Cart{
   remove(thisCartProduct){
     const thisCart = this;
 
-    thisCartProduct.dom.wrapper.remove();
-
     const indexOfCartProduct = thisCart.products.indexOf(thisCartProduct);
-    console.log('splice', indexOfCartProduct);
     thisCart.products.splice(indexOfCartProduct, 1);
-
+    thisCartProduct.dom.wrapper.remove();
     thisCart.update();
   }
   sendOrder(){
@@ -104,7 +101,7 @@ class Cart{
       deliveryFee: thisCart.deliveryFee,
       products: [],
     };
-    console.log('payload', payload);
+
     for(let prod of thisCart.products) {
       payload.products.push(prod.getData());
     }

@@ -23,6 +23,16 @@ export const select = {
     amountWidget: '.widget-amount',
     cartButton: '[href="#add-to-cart"]',
   },
+
+  booking: {
+    peopleAmount: '.people-amount',
+    hoursAmount: '.hours-amount',
+    tables: '.floor-plan .table',
+  },
+  nav: {
+    links: '.main-nav a',
+  },
+
   widgets: {
     amount: {
       input: 'input.amount',
@@ -37,14 +47,6 @@ export const select = {
         input: 'input[type="range"]',
         output: '.output',
       },
-    },
-    booking: {
-      peopleAmount: '.people-amount',
-      hoursAmount: '.hours-amount',
-      tables: '.floor-plan .table',
-    },
-    nav: {
-      links: '.main-nav a',
     },
   },
 
@@ -94,16 +96,16 @@ export const settings = {
     defaultValue: 1,
     defaultMin: 1,
     defaultMax: 9,
-  },
+  }, // CODE CHANGED
+  // CODE ADDED START
   cart: {
     defaultDeliveryFee: 20,
   },
+  // CODE ADDED END
   db: {
     url: '//localhost:3131',
     products: 'products',
     orders: 'orders',
-    product: 'product',
-    order: 'order',
     booking: 'booking',
     event: 'event',
     dateStartParamKey: 'date_gte',

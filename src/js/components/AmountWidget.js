@@ -34,14 +34,7 @@ class AmountWidget{
     thisWidget.input.value = thisWidget.value;
   }
 
-  announce(){
-    const thisWidget = this;
 
-    const event = new CustomEvent('updated', {
-      bubbles: true
-    });
-    thisWidget.element.dispatchEvent(event);
-  }
 
   initActions(){
     const thisWidget = this;
@@ -59,6 +52,14 @@ class AmountWidget{
       event.preventDefault();
       thisWidget.setValue(thisWidget.value + 1);
     });
+  }
+  announce(){
+    const thisWidget = this;
+
+    const event = new CustomEvent('updated', {
+      bubbles: true
+    });
+    thisWidget.element.dispatchEvent(event);
   }
 }
 export default AmountWidget;
