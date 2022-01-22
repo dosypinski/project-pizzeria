@@ -1,5 +1,5 @@
 {
-   "events": [
+   "event": [
       {
         "id": 1,
         "date": "2021-01-01",
@@ -51,9 +51,9 @@
         "starters": ["lemonWater"]
       }
     ],
-    "bookings": [],
+    "booking": [],
 
-    "orders": [],
+    "order": [],
     
     "products":[
        {
