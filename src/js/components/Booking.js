@@ -168,8 +168,13 @@ class Booking{
     thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
-
     thisBooking.dom.tablesWrapper = thisBooking.dom.wrapper.querySelector(select.booking.tablesWrapper);
+
+    thisBooking.dom.form = element.querySelector(select.booking.form);
+
+    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.address);
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
+    thisBooking.dom.starters = element.querySelectorAll(select.booking.starters);
   }
 
   initWidgets(){
@@ -201,6 +206,10 @@ class Booking{
     thisBooking.dom.tablesWrapper.addEventListener('click', function(event){
       event.preventDefault();
       thisBooking.initTables(event);
+    });
+    thisBooking.dom.form.addEventListener('submit', function(event){
+      event.preventDefault();
+      thisBooking.sendBooking();
     });
   }
   
@@ -236,5 +245,46 @@ class Booking{
     }
   }
 
+  sendBooking(){
+    const thisBooking = this;
+
+    const url = settings.db.url + '/' + settings.db.booking;
+    const payload = {
+      date: thisBooking.datePicker.value,     //data wybrana w datePickerze
+      hour: thisBooking.hourPicker.value,     //godzina wybrana w hourPickerze (w formacie HH:ss),
+      table: parseInt(thisBooking.selectedTable),    //numer wybranego stolika (lub null jeśli nic nie wybrano)
+      duration: parseInt(thisBooking.hoursAmount.value), //liczba godzin wybrana przez klienta
+      ppl: parseInt(thisBooking.peopleAmount.value),      //liczba osób wybrana przez klienta
+      starters: [],
+      phone: thisBooking.dom.phone.value,    //numer telefonu z formularza
+      address: thisBooking.dom.address.value,  //adres z formularza
+    };
+
+    for(let starter of thisBooking.dom.starters) {
+      if(starter.checked === true){
+        payload.starters.push(starter.value);
+      }
+    }
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    };
+    fetch(url, options)
+      .then(function(response){
+        if(response.ok){
+          thisBooking.makeBooked(payload.date,
+            payload.hour,
+            payload.duration,
+            parseInt(payload.table));
+        }
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
+    
+  }
 }
 export default Booking;
