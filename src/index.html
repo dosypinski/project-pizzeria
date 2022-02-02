@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
+    rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -19,9 +25,10 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
-      </div>
+        </div>
         <div id="cart" class="cart">
           <div class="cart__summary">
             <span class="cart__total-number">0</span>
@@ -60,6 +67,9 @@
   </header>
 
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -67,6 +77,136 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+
+  <script id="template-home-widget" type="text/x-handlebars-template">
+      <div class="container-home">
+        <section class="splash">
+          <div class="head-row">
+            <div class="upper">
+              <a href="#order" class="link">
+                <h2>ORDER ONLINE</h2>
+                <p>Delicious food delivered to your door</p>
+              </a>
+              <img src="https://i.ibb.co/rsDbgX6/pizza-1.jpg" alt="pizza-1">
+            </div>
+            <div class="upper">
+              <a href="#booking" class="link">
+                <h2>BOOK A TABLE</h2>
+              </a>
+              <img src="https://i.ibb.co/dPMF5D7/pizza-2.jpg" alt="pizza-2">
+            </div>
+            <div class="lower">
+              <div class="open-hours">
+              <H2>OPENING HOURS</H2>
+              <p>MON-SUN, 12PM - 11PM</p>
+            </div>
+          </div>
+        </section>
+      
+        <section class="carousel-box">
+          <div class="carousel"
+            data-flickity='{ "autoPlay": true, "wrapAround": true, "contain": true, "prevNextButtons": false, "pageDots": true}'>
+            <div class="carousel-cell">
+              <div class="pic">
+                <img src="https://i.ibb.co/FbS47S6/pizza-3.jpg" alt="pizza-3">
+              </div>
+              <div class="review">
+                <h2>GREAT VALUE</h2>
+                <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                  lorem ipsum </p>
+                <p>- John Doe</p>
+              </div>
+            </div>
+            <div class="carousel-cell">
+              <div class="pic">
+                <img src="https://i.ibb.co/FbS47S6/pizza-3.jpg" alt="pizza-3">
+              </div>
+              <div class="review">
+                <h2>Delicious food</h2>
+                <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                  lorem ipsum </p>
+                <p>- Rupert Sasnow</p>
+              </div>
+            </div>
+            <div class="carousel-cell">
+              <div class="pic">
+                <img src="https://i.ibb.co/FbS47S6/pizza-3.jpg" alt="pizza-3">
+              </div>
+              <div class="review">
+                <h2>Best service</h2>
+                <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                  lorem ipsum </p>
+                <p>- Kaslik Amanow</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      
+        <section class="gallery">
+          <div class="container-gallery">
+            <div class="box">
+              <img src="https://i.ibb.co/B69Xq9N/pizza-4.jpg" alt="pizza-4">
+              <div class="overlay">
+                <ul class="icons">
+                  <li><i class="fas fa-heart"></i></li>
+                  <li><i class="fas fa-share-alt"></i></li>
+                </ul>
+              </div>
+            </div>
+            <div class="box">
+              <img src="https://i.ibb.co/ZWVL4V2/pizza-5.jpg" alt="pizza-5">
+              <div class="overlay">
+                <ul class="icons">
+                  <li><i class="fas fa-heart"></i></li>
+                  <li><i class="fas fa-share-alt"></i></li>
+                </ul>
+              </div>
+            </div>
+            <div class="box">
+              <img src="https://i.ibb.co/VNNJZLW/pizza-6.jpg" alt="pizza-6">
+              <div class="overlay">
+                <ul class="icons">
+                  <li><i class="fas fa-heart"></i></li>
+                  <li><i class="fas fa-share-alt"></i></li>
+                </ul>
+              </div>
+            </div>
+            <div class="box">
+              <img src="https://i.ibb.co/Vw6hyt6/pizza-7.jpg" alt="pizza-7">
+              <div class="overlay">
+                <ul class="icons">
+                  <li><i class="fas fa-heart"></i></li>
+                  <li><i class="fas fa-share-alt"></i></li>
+                </ul>
+              </div>
+            </div>
+            <div class="box">
+              <img src="https://i.ibb.co/w7bMhnS/pizza-8.jpg" alt="pizza-8">
+              <div class="overlay">
+                <ul class="icons">
+                  <li><i class="fas fa-heart"></i></li>
+                  <li><i class="fas fa-share-alt"></i></li>
+                </ul>
+              </div>
+            </div>
+            <div class="box">
+              <img src="https://i.ibb.co/CKQBSyJ/pizza-9.jpg" alt="pizza-9">
+              <div class="overlay">
+                <ul class="icons">
+                  <li><i class="fas fa-heart"></i></li>
+                  <li><i class="fas fa-share-alt"></i></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer>
+          <a href="#instagram">
+            <p class="footer">Viev more on Instagram</p>
+          </a>
+        </footer>
+      </div>
+  </script>
 
   <script id="template-cart-product" type="text/x-handlebars-template">
     <li>
@@ -242,6 +382,10 @@
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="vendor/range-slider.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
+
 </html>
